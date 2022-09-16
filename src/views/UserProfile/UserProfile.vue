@@ -341,9 +341,9 @@
             email.value = docSnap.data().email;
             phoneNumber.value = docSnap.data().phone;
 
-            if (process.env.DEVELOPMENT) console.log('Document data:', docSnap.data());
+            if (import.meta.env.DEVELOPMENT) console.log('Document data:', docSnap.data());
           } else {
-            if (process.env.DEVELOPMENT) console.log('No such document!');
+            if (import.meta.env.DEVELOPMENT) console.log('No such document!');
           }
         });
       };
@@ -391,7 +391,7 @@
         const querySnapshot = await getDocs(firestoreQuery);
         querySnapshot.forEach((doc) => {
           experimentalData.value.push({ documentId: doc.id, ...doc.data() });
-          if (process.env.DEVELOPMENT) console.log(doc.id, ' => ', doc.data());
+          if (import.meta.env.DEVELOPMENT) console.log(doc.id, ' => ', doc.data());
         });
       };
 
@@ -427,7 +427,7 @@
         delete entity.createdByUser;
 
         currentEntity.value = entity;
-        if (process.env.DEVELOPMENT) console.log(currentEntity.value);
+        if (import.meta.env.DEVELOPMENT) console.log(currentEntity.value);
       };
 
       watchEffect(() => {

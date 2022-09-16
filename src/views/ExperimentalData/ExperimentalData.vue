@@ -243,7 +243,7 @@
           deletedAt: null
         });
 
-        if (process.env.DEVELOPMENT)
+        if (import.meta.env.DEVELOPMENT)
           console.log('Document written with ID: ', docRef.id);
 
         alert('A new document has been added.');

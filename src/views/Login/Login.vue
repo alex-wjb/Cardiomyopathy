@@ -105,7 +105,7 @@
       let actionCodeSettings = {
         url: 'https://advwebdevproject-7d239.web.app/'
       };
-      if (process.env.DEVELOPMENT) actionCodeSettings.url = 'http://localhost:8080/';
+      if (import.meta.env.DEVELOPMENT) actionCodeSettings.url = 'http://localhost:8080/';
       const auth = getAuth();
       const email = ref('');
       const errorMessage = ref();
@@ -116,17 +116,17 @@
       const login = async () => {
         try {
           await signInWithEmailAndPassword(auth, email.value, password.value);
-          if (process.env.DEVELOPMENT) console.log(currentUser.value.emailVerified);
+          if (import.meta.env.DEVELOPMENT) console.log(currentUser.value.emailVerified);
           await currentUser.value.reload();
-          if (process.env.DEVELOPMENT) console.log(currentUser.value.emailVerified);
+          if (import.meta.env.DEVELOPMENT) console.log(currentUser.value.emailVerified);
 
           if (!currentUser.value.emailVerified) {
             await sendEmailVerification(auth.currentUser, actionCodeSettings);
-            if (process.env.DEVELOPMENT) console.log(auth.currentUser);
+            if (import.meta.env.DEVELOPMENT) console.log(auth.currentUser);
             await signOut(auth);
 
-            if (process.env.DEVELOPMENT) console.log('SIGNED OUT');
-            if (process.env.DEVELOPMENT) console.log(auth.currentUser);
+            if (import.meta.env.DEVELOPMENT) console.log('SIGNED OUT');
+            if (import.meta.env.DEVELOPMENT) console.log(auth.currentUser);
             const verifError = new Error();
             verifError.code = 'email-not-verif';
             throw verifError;
@@ -150,7 +150,7 @@
             errorMessage.value = 'Please verify your email before login. Email resent.';
             break;
           default:
-            if (process.env.DEVELOPMENT) console.log('DEFAULT');
+            if (import.meta.env.DEVELOPMENT) console.log('DEFAULT');
             errorMessage.value = error.message;
             break;
           }

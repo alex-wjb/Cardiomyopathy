@@ -4,7 +4,7 @@ import { sendPasswordResetEmail } from 'firebase/auth';
 
 const actionCodeSettings = {
   //change to domain address of production site
-  url: 'http://localhost:8080/'
+  url: 'https://cardiomyopathy-mmu.web.app/#/'
 };
 const error = ref(null);
 const isPending = ref(false);

@@ -70,8 +70,8 @@
         if (geneData === null) return;
 
         currentGene.value = props.selectedGene;
-        if (process.env.DEVELOPMENT) console.log(currentGene);
-        if (process.env.DEVELOPMENT) console.log(geneData);
+        if (import.meta.env.DEVELOPMENT) console.log(currentGene);
+        if (import.meta.env.DEVELOPMENT) console.log(geneData);
 
         const geneObj = geneData.filter((gene) => gene.symbol === currentGene.value);
 
